@@ -1,18 +1,18 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
-export const UserContext = createContext()
+export const UserContext = createContext();
 
-const UserProvider = async ({children}) => {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [password, setPassword] = useState(null);
 
-    const data = { username, password, setUsername, setPassword }
+  const data = { user, password, setPassword, setUser };
 
-    return (
-        <UserContext.Provider value={data}>
-            {children}
-        </UserContext.Provider>
-    )
-}
+  return (
+    <UserContext.Provider value={data}>
+      {children}
+    </UserContext.Provider>
+  );
+};
 
-export default UserProvider
+export default UserProvider;
