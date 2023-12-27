@@ -1,10 +1,13 @@
-import React from 'react'
-
+import React, { useContext, useState } from 'react'
+import { UserContext } from '../../Context/context'
+import { jwtDecode } from "jwt-decode";
 const Account = () => {
+  const {token}=useContext(UserContext)
+  const [userdata] = useState(jwtDecode(token))
   return (
-    <div>
-      salam qaqa
-    </div>
+   <>
+  salam {userdata.Username}
+   </>
   )
 }
 
